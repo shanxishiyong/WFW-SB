@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.example</groupId>
+  <artifactId>WFW-SB</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>WFW-SB-common</module>
+    <module>WFW-SB-consumer</module>
+    <module>WFW-SB-provider</module>
+  </modules>
+
+  <name>WFW-SB</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <dubbo.version>2.6.2</dubbo.version>
+    <zkclient.version>0.10</zkclient.version>
+    <lombok.version>1.16.18</lombok.version>
+    <spring-boot.version>1.5.7.RELEASE</spring-boot.version>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+<!--使用 dependencyManagement 标签，子项目pom不会自动使用pom的jar，除非配置父项目的 groupId 和 artifactId,无需给出 version-->
+  <dependencyManagement>
+      <dependencies>
+          <!-- Springboot依赖 -->
+          <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
+          </dependency>
+
+          <!-- Springboot-web依赖 -->
+          <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+          </dependency>
+
+          <!-- 使用lombok实现JavaBean的get、set、toString、hashCode、equals等方法的自动生成  -->
+          <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+          </dependency>
+
+          <!-- Dubbo依赖 -->
+          <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+          </dependency>
+
+          <!-- zookeeper的客户端依赖 -->
+          <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>${zkclient.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+<!--            <scope>test</scope>-->
+          </dependency>
+
+          <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.3</version>
+<!--            <scope>test</scope>-->
+          </dependency>
+      </dependencies>
+  </dependencyManagement>
+
+</project>
